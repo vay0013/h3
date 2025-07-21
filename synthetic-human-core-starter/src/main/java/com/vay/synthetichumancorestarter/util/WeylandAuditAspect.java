@@ -14,7 +14,6 @@ import java.util.Arrays;
 
 @Slf4j
 @Aspect
-@RequiredArgsConstructor
 public class WeylandAuditAspect {
     private final AuditProducer auditProducer;
 
@@ -22,6 +21,10 @@ public class WeylandAuditAspect {
     private String auditMode;
     @Value("${weyland.kafka.topic}")
     private String kafkaTopic;
+    
+    public WeylandAuditAspect(AuditProducer auditProducer) {
+        this.auditProducer = auditProducer;
+    }
 
     @Around("@annotation(com.vay.synthetichumancorestarter.util.WeylandWatchingYou)")
     public Object auditMethod(ProceedingJoinPoint joinPoint) throws Throwable {
@@ -45,7 +48,12 @@ public class WeylandAuditAspect {
                 message = "[AUDIT] method=%s, args=%s, result=%s, error=%s".formatted(methodName, Arrays.toString(args), result, err);
             }
             if ("kafka".equalsIgnoreCase(auditMode)) {
-                auditProducer.sendAudit(kafkaTopic, message);
+                if (auditProducer == null) {
+                    log.warn("[AUDIT] Kafka audit mode is enabled, but AuditProducer is not available. Logging to console instead.");
+                    log.info(message);
+                } else {
+                    auditProducer.sendAudit(kafkaTopic, message);
+                }
             } else {
                 log.info(message);
             }
