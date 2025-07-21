@@ -1,2 +1,19 @@
 server:
-  port: 8081
+  port: 8080
+
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+threadPoolExecutor:
+  maxSize: 100
+
+weyland:
+  enabled: true
+  audit:
+    mode: kafka # or 'console'
+  kafka:
+    topic: audit

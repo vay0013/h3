@@ -1,20 +1,3 @@
-server:
-  port: 8080
-spring:
-  kafka:
-    bootstrap-servers: localhost:9092
-#    consumer:
-#      group-id: audit
-#      auto-offset-reset: earliest
-#      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-#      value-deserializer: org.springframework.kafka.support.serializer.StringDeserializer
-    producer:
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.springframework.kafka.support.serializer.StringSerializer
-threadPoolExecutor:
-  maxSize: 100
-weyland:
-  audit:
-    mode: kafka
-  kafka:
-    topic: audit
+# This file is intentionally blank. It's a placeholder.
+# Configuration properties should be defined in the consuming application,
+# for example, in bishop-prototype's application.yml.

@@ -1,2 +1,4 @@
 com.vay.synthetichumancorestarter.util.DefaultCommandProcessor
+com.vay.synthetichumancorestarter.util.DefaultCommandQueue
 com.vay.synthetichumancorestarter.service.DefaultMonitoringService
+com.vay.synthetichumancorestarter.config.SyntheticHumanCoreAutoConfiguration

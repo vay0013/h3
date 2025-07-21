@@ -9,13 +9,11 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 
 @Slf4j
 @Aspect
-@Component
 @RequiredArgsConstructor
 public class WeylandAuditAspect {
     private final AuditProducer auditProducer;

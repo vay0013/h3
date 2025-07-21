@@ -19,12 +19,12 @@ public class DefaultBishopPrototypeService implements BishopPrototypeService {
 
     @Override
     public boolean isProcessorBusy() {
-        return monitoringService.isProcessorBusy();
+        return commandProcessor.isBusy();
     }
 
     @Override
     public int getQueueSize() {
-        return monitoringService.getQueueSize();
+        return commandProcessor.getQueueSize();
     }
 
     @Override
